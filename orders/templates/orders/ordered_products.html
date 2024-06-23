@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Ordered Products</title>
+</head>
+<body>
+    <h1>Products Ordered</h1>
+
+    <h2>Last 7 Days</h2>
+    <ul>
+        {% for product in week_products %}
+            <li>{{ product.name }} - ${{ product.price }}</li>
+        {% empty %}
+            <li>No products ordered in the last 7 days.</li>
+        {% endfor %}
+    </ul>
+
+    <h2>Last 30 Days</h2>
+    <ul>
+        {% for product in month_products %}
+            <li>{{ product.name }} - ${{ product.price }}</li>
+        {% empty %}
+            <li>No products ordered in the last 30 days.</li>
+        {% endfor %}
+    </ul>
+
+    <h2>Last 365 Days</h2>
+    <ul>
+        {% for product in year_products %}
+            <li>{{ product.name }} - ${{ product.price }}</li>
+        {% empty %}
+            <li>No products ordered in the last year.</li>
+        {% endfor %}
+    </ul>
+</body>
+</html>
