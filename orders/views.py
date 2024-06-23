@@ -1,17 +1,21 @@
 from django.shortcuts import render
 from django.utils.timezone import now, timedelta
-from .models import Order
+from django.contrib.auth.decorators import login_required
+from .models import Order, Client
 
-
+@login_required
 def ordered_products(request):
     user = request.user
     week_ago = now() - timedelta(days=7)
     month_ago = now() - timedelta(days=30)
     year_ago = now() - timedelta(days=365)
 
-    week_orders = Order.objects.filter(user=user, created_at__gte=week_ago)
-    month_orders = Order.objects.filter(user=user, created_at__gte=month_ago)
-    year_orders = Order.objects.filter(user=user, created_at__gte=year_ago)
+    # Получаем клиента по текущему пользователю
+    client = Client.objects.get(email=user.email)
+
+    week_orders = Order.objects.filter(client=client, order_date__gte=week_ago)
+    month_orders = Order.objects.filter(client=client, order_date__gte=month_ago)
+    year_orders = Order.objects.filter(client=client, order_date__gte=year_ago)
 
     week_products = set(product for order in week_orders for product in order.products.all())
     month_products = set(product for order in month_orders for product in order.products.all())
