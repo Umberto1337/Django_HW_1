@@ -1,0 +1,26 @@
+# Python
+*.pyc
+__pycache__/
+
+# Virtual Environment
+venv/
+env/
+*.log
+
+# Database
+db.sqlite3
+
+# Django
+*.pyc
+*.pyo
+*.pyd
+*.db
+*.sqlite3
+*.env
+
+# Logs
+*.log
+
+# System files
+.DS_Store
+*.swp
