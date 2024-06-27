@@ -1,5 +1,5 @@
 """
-URL configuration for myhomework project.
+URL configuration for HW4 project.
 
 The `urlpatterns` list routes URLs to views. For more information please see:
     https://docs.djangoproject.com/en/5.0/topics/http/urls/
@@ -19,6 +19,6 @@ from django.urls import path, include
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('myapp2/', include('myapp2.urls')),
-    path('orders/', include('orders.urls')),
+    path('', include('formsapp.urls')),
+
 ]
